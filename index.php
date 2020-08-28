@@ -1,46 +1,52 @@
 
 <?php
 session_start();
+//check if user isn't logged in
 if (!isset($_SESSION['loggedin'])) {
-	echo "Access Forbidden";
-	header("refresh:3; login.php");
-	die();
-	//header('location: login.php');
+$_SESSION['msg'] = "You must log in first";
 
-}elseif ($_SESSION['usertype']==0) {
-	    echo "Access Forbidden";
-	    die();
-	    //header('location: login.php');
-}elseif($_SESSION['usertype']==1) {
-	    //echo "you are admin";
-	    //header('location: login.php');
-    }
+echo "you must login first.";
+header("refresh:3; ../login.php");
+die(); // prevent page from loading
+//header('location: login.php');
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"><head><meta charset="UTF-8">
 
-<meta charset="UTF-8">
 
-<title>Management</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Admin management page">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="heatmap/lib/leaflet.css">
-<link rel="stylesheet" href="credentials.css">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="You can do alot of suff!.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="heatmap/lib/leaflet.css">
+    <link rel="stylesheet" href="credentials.css">
+
     <link rel="stylesheet" href="admin.css">
-
-
 </head>
 <body>
 <div class="visualizer">
-
+    <!-- Shown before the heatmap is displayed -->
     <div class="container">
         <div id="content-div" class="content">
-            <div id="flex1">
-            <div id="intro" class="content-box">
-                    <button id="dashboard" class="btn button">Go to dashboard</button>
+        <div id="flex1">
+            <div id="intro-user" class="content-box">
+                <div id="option2" class="option-box">
+                    <p id="current-score"> Eco score for current month: </p>
+                    <p id="yearly-score"> Eco score for last 12 months: </p>
+                    <p id="data-period"> Period ranges from no data to no data </p>
+                    <p id="last-upload"> Last upload: </p>
+                    </div>
+                    <div id="leaderboard">
+                    <h2>Leaderboard</h2>
+                        1. John S. 88% Score
+                        <br>2. Illidan S. 75% Score
+                        <br>3. Spyros T. 69% Score
+                        <br><p>7. You ??% Score</p>
+                    </div>
                     <div id="options-box" class="option-box">
-                        <h2> Location History Heatmap </h2>
+                        <h2> Generate charts </h2>
+                        Select Date
                         Select year
                         <select id="year" class="select" style="margin-left: 9px;margin-bottom: 5px;">
                             <option value=''>--Select Year--</option>
@@ -209,47 +215,55 @@ if (!isset($_SESSION['loggedin'])) {
                                 <label class="form-check-label" >Still</label>
                           </div>
                           </div>
-                        	</form>
+                        </form>
                         <br>
-                         <form name="export-as" id="export-as">
-                         <div id="radio-flex1">
-                           Export as
-                           </div>
-                           <div id="radio-flex2">
-                           <input type="radio" id="csv" name="export-as" value="csv">
-                           <label for="export-as">csv</label><br>
-                           <input type="radio" id="json" name="export-as" value="json">
-                           <label for="export-as">json</label><br>
-                           <input type="radio" id="xml" name="export-as" value="xml">
-                           <label for="export-as">xml</label>
-                           </div>
-                           </form>
-                         <br>
+
+                        <br>
                         <button id="apply" class="btn button">Apply filters</button>
-                        <button id="export-data" class="btn button">Export selected data</button>
-                        <button id="delete-data" class="btn button">Delete all data</button>
+                    <div id="option4" class="option-box">
+                        <h2>Location History Upload</h2>
+
+                        <strong><span style="color: #7982B9; ">Note:</span></strong> You can select some areas to exclude before uploading your data.
+
+                        <p class="fallback">Upload your <b>LocationHistory.json</b> file:
+                            <input name="file" type="file" id="file"></p>
+
+                        <div id="success" class="success hidden">
+                            <strong> Upload successful. </strong>
+                        </div>
+                    </div>
                     </div>
                 </div>
+
+
+                    </div>
+                    <div id="graphs" class="graphs">
+                        <div class="chart-container">
+                        <canvas id="chart" style="display: block; width: 733px; height: 321px;" width="733" height="321"></canvas>
+                    </div>
+            </div>
             </div>
 
 
             </div>
 
         </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.1/Chart.min.js" integrity="sha512-o9zl61bgD9FuW1ww4rlG7/wQgg0V5Iy0Sm2qcLLwUHZqUyMgKIJjIk/ai8egAMwnOL8nyNOltB70cg+ZSrsjgw==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="heatmap/lib/leaflet.js"></script>
-    <script src="heatmap/lib/leaflet.heat.min.js"></script>
-    <script src="admin.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.1/Chart.min.js" integrity="sha512-o9zl61bgD9FuW1ww4rlG7/wQgg0V5Iy0Sm2qcLLwUHZqUyMgKIJjIk/ai8egAMwnOL8nyNOltB70cg+ZSrsjgw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="heatmap/lib/leaflet.js"></script>
+<script src="heatmap/lib/leaflet.heat.min.js"></script>
+<script src="heatmap/lib/prettysize.js"></script>
+<script src="heatmap/lib/oboe-browser.min.js"></script>
+<script src="index.js?"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
 
 
 
 
 
-</div>>
-</body><!-- <a href="https://www.123freevectors.com/">Free Vector</a> <!-- cool background pic :) -->
+</div></body><!-- <a href="https://www.123freevectors.com/">Free Vector</a> <!-- cool background pic :) -->
 </html>
+

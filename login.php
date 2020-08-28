@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     // If user is logged in
                 	if($usertype==0){
-                	header("location: heatmap/index.php");
+                	header("location: index.php");
 
                     // If admin is logged in
                 	}elseif($usertype==1){

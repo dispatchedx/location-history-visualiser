@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin'])) {
 <title>Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Admin management page">
-<link rel="stylesheet" href="heatmap/index.css">
+<link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="heatmap/lib/leaflet.css">
 <link rel="stylesheet" href="credentials.css">
     <link rel="stylesheet" href="admin.css">
