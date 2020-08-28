@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header("refresh:3; login.php");
 	die();
 	//header('location: login.php');
-
+//test
 }elseif ($_SESSION['usertype']==0) {
 	    echo "Access Forbidden";
 	    die();
