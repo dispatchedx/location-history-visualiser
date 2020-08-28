@@ -1,0 +1,31 @@
+<?php
+//$test = json_encode([{"lat":1,"lng":2}],[{"lat":-1,"lng":-2}]);
+//	echo $test;
+session_start();
+require_once "../config.php";
+ // gets timestamp of 1st of current month
+$user_id=$_SESSION['user_id'];
+$sql = "SELECT  (date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 2 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 2 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 3 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 3 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 4 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 4 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 5 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 5 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 6 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 6 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 7 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 7 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 8 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 8 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 9 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 9 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 10 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 10 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 11 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 11 MONTH), '%m')) AND user_id='$user_id'
+         UNION ALL SELECT (date_format(DATE_SUB(curdate(), INTERVAL 12 MONTH), '%M')), SUM(`activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE')/SUM(`activity.type`='IN_VEHICLE' or `activity.type`='RUNNING' or `activity.type`='WALKING' or `activity.type`='ON_BICYCLE') FROM location_data WHERE (date_format(FROM_UNIXTIME(`activity.timestampMs`/1000), '%m'))=(date_format(DATE_SUB(curdate(), INTERVAL 12 MONTH), '%m')) AND user_id='$user_id';";
+
+if ($result = mysqli_query($link, $sql))
+    {
+            $array = [];
+              while ($row = mysqli_fetch_row($result)) {
+                $array [] = [$row[0],$row[1]];
+                // Loop through file pointer and a line
+             }
+                     echo json_encode($array);
+    }else echo mysqli_error($link);
+
+?>
