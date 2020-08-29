@@ -8,6 +8,8 @@ body {
     margin: 0;
     font-family: "Myriad Pro","Arial",sans, sans-serif;
     font-size: 14px;
+  background-attachment: fixed;
+  background-position: center center;
 }
 #flex1{
   display: flex;
