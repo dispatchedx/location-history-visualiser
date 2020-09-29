@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin'])) {
 $_SESSION['msg'] = "You must log in first";
 
 echo "you must login first.";
-header("refresh:3; ../login.php");
+header("refresh:3; /login.php");
 die(); // prevent page from loading
 //header('location: login.php');
 }
