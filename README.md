@@ -3,4 +3,4 @@ A web app with users being able to upload a google-take out location history fil
 For explanation and screenshots see: [Presentation](/presentation.pdf) (greek)
 Database creation at: /database export.
 
-<b>note:</b> data outside of patras, Greece is cut off as per assignment guidelines
+<b>note:</b> data outside of [patras, Greece] is cut off as per assignment guidelines
