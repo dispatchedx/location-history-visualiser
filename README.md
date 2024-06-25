@@ -4,3 +4,5 @@ For explanation and screenshots see: [Presentation](/presentation.pdf) (greek)
 Database creation at: /database export.
 
 <b>note:</b> data outside of [patras, Greece] is cut off as per assignment guidelines
+
+![heatmap, statistics](/other/overview.png?raw=true "Overview")
