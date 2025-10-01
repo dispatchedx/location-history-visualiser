@@ -37,4 +37,3 @@ This is a full-stack web application designed to parse, analyze, and visualize G
 For more explanation and screenshots see: [Presentation](/presentation.pdf) (greek)
 Database creation at: /database export. Fake/test data can be generated with generate_random_location_dates.py
 
-<b>note:</b> data outside of [patras, Greece] is cut off as per requested guidelines
