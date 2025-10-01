@@ -778,11 +778,11 @@
 			};
 			distance = calculateDistance(center, point);
 			// if 10km out of patras remove from data
-			if (distance > 10000) {
+			/*if (distance > 10000) {
 				data.splice(j, 1)
 				if (j !== 0)
 					j--;
-			}
+			}*/
 		}
 		if (!excludedAreas.length) { // if no excluded areas
 			//alert("no exclude");
